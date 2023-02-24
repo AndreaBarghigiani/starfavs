@@ -26,7 +26,7 @@ const FavRow = forwardRef(function FavRow({ url }, ref) {
   return (
     <div
       ref={ref}
-      className="flex items-center justify-between border-b p-2 hover:bg-slate-700"
+      className="flex items-center justify-between p-2 hover:bg-slate-700 [&:not(:last-child)]:border-b"
     >
       <Link to={`${type}/${id}`}>{data.name}</Link>
 

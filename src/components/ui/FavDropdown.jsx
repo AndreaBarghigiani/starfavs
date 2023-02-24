@@ -14,7 +14,7 @@ function FavDropdown() {
         {favs.length}
       </Menu.Button>
 
-      <Menu.Items className="absolute right-0 w-56 origin-top-right text-right">
+      <Menu.Items className="absolute right-0 z-10 -mt-px w-56 origin-top-right border bg-slate-900 text-right">
         {favs.map((url) => (
           <Menu.Item key={url}>
             <FavRow url={url} />

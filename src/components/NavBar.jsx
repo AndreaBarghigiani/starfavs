@@ -16,9 +16,10 @@ function NavBar() {
 
   return (
     <header className="my-4 flex items-center justify-between">
-      <h1>
-        <Link to="/">Logo</Link>
+      <h1 className="text-xl font-semibold">
+        <Link to="/">StarFavs</Link>
       </h1>
+
       <nav className="ml-auto flex space-x-3">
         <NavLink className={classes} to="/planets">
           Planets
