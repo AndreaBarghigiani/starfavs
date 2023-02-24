@@ -15,7 +15,6 @@ function FilmItem({ film }) {
   });
 
   if (isLoading) {
-    console.log(`film is loading...`);
     return <Skeleton className="h-2 w-full" />;
   }
 
