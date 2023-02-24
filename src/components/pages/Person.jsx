@@ -22,7 +22,7 @@ function Person() {
   const {
     data: image,
     isLoading: isLoadingImage,
-    errorImage,
+    error: fallbackImage, // NOTE: overriding error response from API
   } = useRandomPhotoQuery(`${type}${id}`);
 
   const films = person
@@ -56,9 +56,12 @@ function Person() {
     return <p>Something went wrong, check the console for more details.</p>;
   }
 
+  // Not proud, but it works
+  const finalImage = fallbackImage ? fallbackImage : image;
+
   return (
     <>
-      {person && image ? (
+      {person ? (
         <div className="mx-auto flex max-w-xl flex-col items-center">
           <h1 className="my-5 text-center text-4xl font-semibold">
             {person.name}
@@ -66,8 +69,8 @@ function Person() {
 
           <img
             className="mb-5 h-40 w-40 border object-cover shadow-thick"
-            src={image.urls.thumb}
-            alt={image.alt_description}
+            src={finalImage.urls.thumb}
+            alt={finalImage.alt_description}
           />
 
           <LoremIpsum length={160} />

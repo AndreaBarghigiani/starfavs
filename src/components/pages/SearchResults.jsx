@@ -7,7 +7,10 @@ function SearchResults({ type, results }) {
   return (
     <>
       {results.map((item) => (
-        <div className="border-b p-2 transition-colors hover:bg-slate-800">
+        <div
+          key={item.url}
+          className="border-b p-2 transition-colors hover:bg-slate-800"
+        >
           <Link className="block" to={`${type}/${returnId(item.url)}`}>
             {item.name}
           </Link>

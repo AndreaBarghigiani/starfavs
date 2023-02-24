@@ -15,6 +15,23 @@ const photoApi = createApi({
           collections: "_OSPKWiUrVo",
         },
       }),
+      transformErrorResponse: (res, meta, arg) => {
+        if (res.status === 401) {
+          res = {
+            status: 200,
+            data: {
+              urls: {
+                thumb: `/public/fallback.jpg`,
+              },
+              alt_description: "Error while retreiving",
+            },
+          };
+
+          return res.data;
+        }
+
+        return res.data;
+      },
     }),
   }),
 });

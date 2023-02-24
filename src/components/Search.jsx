@@ -15,8 +15,6 @@ function Search() {
   const [skip, setSkip] = useState(true);
 
   const { data, isFetching, error } = useSearchAnyQuery(search, { skip });
-  console.log("isFetching:", isFetching);
-  console.log("data:", data);
 
   const handleSubmit = (e) => {
     e.preventDefault();

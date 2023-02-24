@@ -19,7 +19,7 @@ function Starship() {
   const {
     data: image,
     isLoading: isLoadingImage,
-    errorImage,
+    error: fallbackImage, // NOTE: overriding error response from API
   } = useRandomPhotoQuery(`${type}${id}`);
 
   if (isLoading || isLoadingImage) {
@@ -37,6 +37,9 @@ function Starship() {
     return <p>Something went wrong, check the console for more details.</p>;
   }
 
+  // Not proud, but it works
+  const finalImage = fallbackImage ? fallbackImage : image;
+
   return (
     <>
       <div className="mx-auto flex max-w-xl flex-col items-center gap-4">
@@ -45,8 +48,8 @@ function Starship() {
 
           <img
             className="mx-auto mb-5 h-40 w-40 border object-cover shadow-thick"
-            src={image.urls.thumb}
-            alt={image.alt_description}
+            src={finalImage.urls.thumb}
+            alt={finalImage.alt_description}
           />
 
           <LoremIpsum length={160} />
